@@ -29,12 +29,12 @@ app.get("/news/:id", (req, res) => {
 
 // important categories way news load
 app.get("/categories/:id", (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
 
-  if (id === 0) {
+  if (id == 0) {
     res.send(news);
   } else {
-    const categoryNews = news.filter((n) => n.category_id !== id);
+    const categoryNews = news.filter((n) => parseInt(n.category_id) === id);
     res.send(categoryNews);
   }
 });
